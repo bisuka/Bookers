@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="box">
+		<h1>Books</h1>
+		<p>Title</p>
+		<p>Body</p>
+		<p>New book</p>
+
+		<!-- form_for -->
+		<%= form_for(@book) do |f| %>
+
+			<p>Title</p>
+			<%= f.text_field :title %>
+
+			<p>Body</p>
+			<%= f.text_area :body %>
+
+			<%= f.submit '投稿' %>
+
+		<% end %>
+	</div>
+
+</body>
+</html>

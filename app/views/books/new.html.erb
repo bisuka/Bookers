@@ -1,0 +1,14 @@
+<p>New book</p>
+
+<!-- form_for -->
+<%= form_for(@book) do |f| %>
+
+	<p>Title</p>
+	<%= f.text_field :title %>
+
+	<p>Body</p>
+	<%= f.text_area :body %>
+
+	<%= f.submit '投稿' %>
+
+<% end %>
