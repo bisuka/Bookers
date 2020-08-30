@@ -6,23 +6,93 @@
 <body>
 	<div class="box">
 		<h1>Books</h1>
-		<p>Title</p>
-		<p>Body</p>
-		<p>New book</p>
-
-		<!-- form_for -->
-		<%= form_for(@book) do |f| %>
-
-			<p>Title</p>
-			<%= f.text_field :title %>
-
-			<p>Body</p>
-			<%= f.text_area :body %>
-
-			<%= f.submit '投稿' %>
-
-		<% end %>
+		<table>
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Body</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @books.each do |book| %>
+				<tr>
+					<td><%= book.title %></td>
+					<td><%= book.body %></td>
+					<td><%= link_to "Show", book_path(book) %>
+						<%= link_to "Edit", edit_book_path(book) %>
+						<%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?" %>
+					</td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+   <!-- <section class="box1">
+			<h3>Title</h3>
+			<% @books.each do |book| %>
+				<%= book.title %>
+				<p></p>
+			<% end %>
+		</section>
+		<section class="box2">
+			<h3>Body</h3>
+			<% @books.each do |book| %>
+				<%= book.body %>
+				<p></p>
+			<% end %>
+		</section>
+		<section class="box3">
+			<h3>a</h3>
+			<% @books.each do |book| %>
+				<%= link_to "Show", book_path(book) %>
+				<%= link_to "Edit", edit_book_path(book) %>
+				<%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "Are you sure?" %>
+				<p></p>
+			<% end %>
+		</section>-->
 	</div>
+		<section class="clearfix">
+			<h1>New book</h1>
 
+　　　<!-- ayn? = メソッド -->
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+     <!-- count = メソッド -->
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+			<!-- エラーメッセージ -->
+
+<!-- 			<% if @book.errors.any? %>
+			  <div id="error_explanation" class="alert alert-danger">
+			    <ul>
+			      <% @book.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			      <% end %>
+			    </ul>
+			  </div>
+			<% end %> -->
+
+			<!-- form_for -->
+			<%= form_for(@book) do |f| %>
+
+				<p>Title</p>
+				<%= f.text_field :title %>
+
+				<p>Body</p>
+				<%= f.text_area :body %>
+
+				<p></p>
+				<%= f.submit 'Create Book' %>
+
+			<% end %>
+		</section>
 </body>
 </html>
