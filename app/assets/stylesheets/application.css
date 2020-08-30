@@ -28,7 +28,7 @@
 .box {
 	widows: 100%;
 	width: 100%;
-	background-color: yellow;
+	/*background-color: yellow;*/
 }
 .box1,.box2,.box3 {
 	float: left;
